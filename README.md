@@ -39,7 +39,7 @@ creating schemas and data tables, basic queries, data cleaning
 
 2) Data Cleaning:
 
--To resolve missing and null values in the customer_order table, I created the 2 following queries which replace empty values and NULL with none. 
+-To resolve missing and null values in the customer_order table, I created the 2 following queries which replace empty values and NULL in the exclusions column with none. 
 
 UPDATE customer_orders
 SET exclusions = 'none'
@@ -48,6 +48,20 @@ WHERE exclusions IS NULL;
 UPDATE customer_orders
 SET exclusions = 'none'
 WHERE TRIM(exclusions) = ''; 
+
+-I repeated this process for the extras column. Additionally, I changed a value of NaN to none. 
+
+UPDATE customer_orders
+SET extras = 'none'
+WHERE extras IS NULL;
+
+UPDATE customer_orders
+SET extras = 'none'
+WHERE TRIM(extras) = ''; 
+
+UPDATE customer_orders
+SET extras = 'none'
+WHERE extras = 'NaN';
 
 ### Case Study Questions: 
 
