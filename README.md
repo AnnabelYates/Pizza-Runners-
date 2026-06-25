@@ -6,7 +6,7 @@ Using SQL, I cleaned a database and performed an exploratory data analysis for a
 
 In Google Cloud BigQuery, I created a database with 6 tables uploaded from CVC files. Using SQL, I 
 
-From the analysis, I discovered that. I presented the following business recommendations to Danny's Diner: 
+From the analysis, I discovered that. I presented the following business recommendations to : 
 
 1) 
 
