@@ -37,7 +37,18 @@ creating schemas and data tables, basic queries, data cleaning
 ## Results and Business Recommendations:
 1) Setting Up the Database: I created a new schema in MYSQL Workbench called pizza_runners. Then, I added the 6 provided data tables using Table Data Import Wizard and CVC files. I allowed the program to auto select the data types for each column so I could practice data cleaning. 
 
-2) Data Cleaning:  
+2) Data Cleaning:
+
+-To resolve missing and null values in the customer_order table, I created the 2 following queries which replace empty values and NULL with none. 
+
+UPDATE customer_orders
+SET exclusions = 'none'
+WHERE exclusions IS NULL; 
+
+UPDATE customer_orders
+SET exclusions = 'none'
+WHERE TRIM(exclusions) = ''; 
+
 ### Case Study Questions: 
 
 ### Business Recommendations: 
