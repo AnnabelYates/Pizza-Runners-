@@ -46,11 +46,11 @@ I created a new schema in MYSQL Workbench called pizza_runners. Then, I added th
 
 - To resolve missing and null values in the customer_orders table, I created the 2 following queries which replace empty values and NULL in the exclusions column with none. 
 
-      UPDATE customer_orders
+      -UPDATE customer_orders
       SET exclusions = 'none'
       WHERE exclusions IS NULL; 
 
-      UPDATE customer_orders
+      -UPDATE customer_orders
       SET exclusions = 'none'
       WHERE TRIM(exclusions) = ''; 
 
