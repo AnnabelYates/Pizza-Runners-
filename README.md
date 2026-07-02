@@ -68,20 +68,6 @@ I created a new schema in MYSQL Workbench called pizza_runners. Then, I added th
       SET extras = 'none'
       WHERE extras = 'NaN';
 
-- In the runner_orders table, in the pickup_time, distance and duration columns, I substituted NaN for null for clarity.
-
-      UPDATE runner_orders
-      SET pickup_time = 'NaN'
-      WHERE pickup_time IS NULL;
-
-      UPDATE runner_orders
-      SET distance = 'NaN'
-      WHERE distance IS NULL;
-
-      UPDATE runner_orders
-      SET duration = 'NaN'
-      WHERE duration IS NULL;
-
 - In the runner_orders table, in the cancellation column, I substituted null, empty and NaN values for no to make it clearer that there was no cancellation.
 
       UPDATE runner_orders
@@ -134,7 +120,33 @@ I created a new schema in MYSQL Workbench called pizza_runners. Then, I added th
 
       ALTER TABLE runner_orders
       RENAME COLUMN duration to duration_min;
-      
+
+#### Data Types:
+
+- Columns containing dates and times were incorrectly assigned a TEXT data type. I changed these to be DATETIME or DATE, as appropriate. If there were any empty values within the column, I changed this to DATETIME data type using a 2 step process by first checking that all empty values are set to null so the next command does not error. 
+
+      UPDATE runner_orders
+      SET pickup_time = NULL
+      WHERE pickup_time = '' OR pickup_time IS NULL;
+
+      ALTER TABLE runner_orders
+      MODIFY pickup_time DATETIME
+
+      ALTER TABLE customer_orders
+      MODIFY order_time DATETIME
+
+      ALTER TABLE runners
+      MODIFY registration_date DATE
+
+- In runner_orders, I changed the distance_km from TEXT data type to FLOAT. 
+
+      ALTER TABLE runner_orders
+      MODIFY distance_km FLOAT
+
+- In runner_orders, I changed the duration_min from TEXT data type to INT.
+
+      ALTER TABLE runner_orders
+      MODIFY duration_min INT
 
 ### Case Study Questions: 
 
